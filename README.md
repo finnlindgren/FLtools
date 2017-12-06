@@ -9,7 +9,7 @@
 ```
 #!R
 
-devtools::install_bitbucket("finnlindgren/FLtools@default")
+devtools::install_bitbucket("finnlindgren/FLtools")
 ```
 
 ### Who do I talk to? ###
