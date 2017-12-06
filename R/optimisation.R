@@ -528,7 +528,7 @@ server <- function(input, output, session) {
   })
 }
 
-shinyApp(ui=meshbuilder.ui, server=meshbuilder.server)
+shinyApp(ui=ui, server=server)
 }
 
 
