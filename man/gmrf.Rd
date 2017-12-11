@@ -1,4 +1,5 @@
-\name{covariance.ar1}
+\name{gmrf}
+\alias{covariance.ar1}
 \alias{precision.ar1}
 \title{Gaussian Markov random field tools}
 \usage{
