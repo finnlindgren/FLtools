@@ -1,3 +1,6 @@
 export(optimisation)
+export(covariance.ar1)
+export(precision.ar1)
 
 import(shiny)
+import(Matrix)

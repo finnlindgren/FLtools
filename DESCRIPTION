@@ -1,13 +1,13 @@
 Package: FLtools
 Type: Package
 Title: Various R tools
-Version: 0.0.1
-Date: 2017-12-06
+Version: 0.0.2
+Date: 2017-12-11
 Author: Finn Lindgren <finn.lindgren@gmail.com>
 Maintainer: Finn Lindgren <finn.lindgren@gmail.com>
-Description: Illustration tools for numerical optimisation
+Description: Illustration tools for numerical optimisation, and simple GMRFs
 Imports:
-    shiny
+    shiny, Matrix
 License: GPL (>=3)
 Copyright: The R package and code, and the main programs, were written by and
     are Copyright by Finn Lindgren, and are redistributable under the GNU Public
