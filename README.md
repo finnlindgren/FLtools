@@ -11,6 +11,12 @@
 
 devtools::install_bitbucket("finnlindgren/FLtools")
 ```
+or (with the more lightweights remotes package)
+```
+#!R
+
+remotes::install_bitbucket("finnlindgren/FLtools")
+```
 
 ### Who do I talk to? ###
 
