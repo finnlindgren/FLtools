@@ -11,7 +11,7 @@
 
 devtools::install_bitbucket("finnlindgren/FLtools")
 ```
-or (with the more lightweights remotes package)
+or (with the more lightweight remotes package)
 ```
 #!R
 
