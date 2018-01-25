@@ -519,7 +519,6 @@ optimisation.app <- function() {
                       state$x.state$meta$f, col = 2)
               }
             } else if (input$method == "gradient") {
-              browser()
               curve(
                 as.vector(state$fn$f(curr_x)) +
                   (x - curr_x_v) * as.vector(state$fn$g(curr_x, state$fn$f)),
