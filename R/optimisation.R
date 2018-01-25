@@ -539,6 +539,7 @@ optimisation.app <- function() {
                       (x - curr_x_v) * as.vector(state$fn$g(curr_x, state$fn$f)) +
                         (x - curr_x_v) ^ 2 / 2 * as.vector(H2), add = TRUE, col = 4)
             } else if (input$method == "bfgs") {
+              browser()
               H <- state$fn$h(curr_x, state$fn$f)
               if (is.null(state$x.state$Hinv)) {
                 EH <- eigen(H)
@@ -552,10 +553,10 @@ optimisation.app <- function() {
               }
               curve(as.vector(state$fn$f(curr_x)) +
                       (x - curr_x_v) * as.vector(state$fn$g(curr_x, state$fn$f)) +
-                        (x - curr_x) ^ 2 / 2 * as.vector(H), add = TRUE, col = 2)
+                        (x - curr_x_v) ^ 2 / 2 * as.vector(H), add = TRUE, col = 2)
               curve(as.vector(state$fn$f(curr_x)) +
                       (x - curr_x_v) * as.vector(state$fn$g(curr_x, state$fn$f)) +
-                        (x - curr_x) ^ 2 / 2 * as.vector(H2), add = TRUE, col = 4)
+                        (x - curr_x_v) ^ 2 / 2 * as.vector(H2), add = TRUE, col = 4)
             }
           } else {
             curr_x <- state$x.state$x
