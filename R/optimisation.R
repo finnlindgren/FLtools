@@ -550,10 +550,10 @@ optimisation.app <- function() {
               } else {
                 H2 <- solve(state$x.state$Hinv)
               }
-              curve(state$fn$f(curr_x) +
+              curve(as.vector(state$fn$f(curr_x)) +
                       (x - curr_x_v) * as.vector(state$fn$g(curr_x, state$fn$f)) +
                         (x - curr_x) ^ 2 / 2 * as.vector(H), add = TRUE, col = 2)
-              curve(state$fn$f(curr_x) +
+              curve(as.vector(state$fn$f(curr_x)) +
                       (x - curr_x_v) * as.vector(state$fn$g(curr_x, state$fn$f)) +
                         (x - curr_x) ^ 2 / 2 * as.vector(H2), add = TRUE, col = 4)
             }
