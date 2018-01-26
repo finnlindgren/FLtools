@@ -355,7 +355,7 @@ optimisation.app <- function() {
     state
   }
 
-  ad.quad <- function(f0, g, H, x, xlim, ylim, col=2, trans=function(x) log10(x + 1), lev=1:10 / 2, lty=1) {
+  ad.quad <- function(f0, g, H, x, xlim, ylim, col=2, trans=function(x) log10(abs(x + 1)), lev=1:10 / 2, lty=1) {
     ## function to add a quadratic approximation to a contour
     ## plot of a function, based on a Taylor expansion
     ## at x,z
