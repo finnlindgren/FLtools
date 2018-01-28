@@ -24,6 +24,7 @@ optimisation.app <- function() {
             "Simple (1D)" = "simple.1d",
             "Simple (2D)" = "simple.2d",
             "Rosenbrock (2D)" = "rosenbrock",
+            "Himmelblau (2D)" = "himmelblau",
             "Multimodal (1D)" = "multimodal.1d",
             "Multimodal (2D)" = "multimodal.2d",
             "Spiral (2D)" = "spiral"
@@ -32,8 +33,8 @@ optimisation.app <- function() {
         selectInput(
           "method", "Method:",
           c(
-            "Simplex" = "simplex",
-            "Gradient descent (with LS)" = "gradient",
+            "Nelder-Mead Simplex" = "simplex",
+            "Gradient Descent (with LS and adaptive step length)" = "gradient",
             "Newton (with LS)" = "newton",
             "Newton-BFGS (with LS)" = "bfgs"
           )
@@ -85,16 +86,35 @@ optimisation.app <- function() {
     } else if (target == "rosenbrock") {
       f.fn <- function(x) 100 * (x[2, ] - x[1, ] ^ 2) ^ 2 + (1 - x[1, ]) ^ 2 - 1
       g.fn <- function(x, f) rbind(
-          -400 * x[1, ] * (x[2, ] - x[1, ] ^ 2) - 2 * (1 - x[1, ]),
-          200 * (x[2, ] - x[1, ] ^ 2)
-        )
+        -400 * x[1, ] * (x[2, ] - x[1, ] ^ 2) - 2 * (1 - x[1, ]),
+        200 * (x[2, ] - x[1, ] ^ 2)
+      )
       h.fn <- function(x, f) rbind(
-          c(1200 * x[1, ] ^ 2 - 400 * x[2, ] + 2, -400 * x[1, ]),
-          c(-400 * x[1, ], 200)
-        )
+        c(1200 * x[1, ] ^ 2 - 400 * x[2, ] + 2, -400 * x[1, ]),
+        c(-400 * x[1, ], 200)
+      )
       xlim <- c(-1.5, 1.5)
       ylim <- c(-0.5, 1.5)
       x.default <- rbind(-0.5, 1)
+      n.contour <- 50
+    } else if (target == "himmelblau") {
+      f.fn <- function(x) (x[1, ] ^ 2 + x[2, ] - 11) ^ 2 + (x[1, ] + x[2, ] ^ 2 - 7) ^ 2
+      g.fn <- function(x, f) rbind(
+        2 * (x[1, ] ^ 2 + x[2, ] - 11) * 2 * x[1, ] + 2 * (x[1, ] + x[2, ] ^ 2 - 7),
+        2 * (x[1, ] ^ 2 + x[2, ] - 11) + 2 * (x[1, ] + x[2, ] ^ 2 - 7) * 2 * x[2, ]
+      )
+      h.fn <- function(x, f) rbind(
+        c(
+          2 * (2 * x[1, ]) * 2 * x[1, ] + 2 + 2 * (x[1, ] ^ 2 + x[2, ] - 11) * 2,
+          2 * 2 * x[1, ] + 2 * 2 * x[2, ]
+          ),
+        c(
+          2 * 2 * x[1, ] + 2 * 2 * x[2, ],
+          2 + 2 * 2 * x[2, ] * 2 * x[2, ] + 2 * (x[1, ] + x[2, ] ^ 2 - 7) * 2
+        ))
+      xlim <- c(-5, 5)
+      ylim <- c(-5, 5)
+      x.default <- rbind(0.134, -5)
       n.contour <- 50
     } else if (target == "multimodal.1d") {
       f.fn <- function(x) sin(x * 2 * pi) + x ^ 2
